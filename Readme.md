@@ -21,4 +21,10 @@ The test suite can be run like so:
 npm test
 ```
 
-The tests use Jest. See the example test in `app/Application/__tests__/index.js`. Jest seems slow, would love suggestions on how to make it faster.
+To run the tests in watch mode, use this instead:
+
+```
+npm run test:watch
+```
+
+The tests use Karma, Mocha and Chai through PhantomJS. See the example test in `app/Application/__tests__/index.js`.

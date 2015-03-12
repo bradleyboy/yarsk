@@ -1,6 +1,3 @@
-jest.dontMock('../index.jsx');
-jest.dontMock('../style.sass');
-
 describe('Application', function() {
   it('displays "Hello, World!"', function() {
     var React = require('react/addons');
@@ -12,7 +9,8 @@ describe('Application', function() {
     );
 
     var label = TestUtils.findRenderedDOMComponentWithTag(application, 'h1');
+    var labelDOM = React.findDOMNode(label);
 
-    expect(label.getDOMNode().textContent).toEqual('Hello, World!');
+    expect(labelDOM.textContent).to.equal('Hello, World!');
   });
 });
