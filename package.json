@@ -1,0 +1,31 @@
+{
+  "name": "bradleyboy-react-starter",
+  "version": "1.0.0",
+  "description": "My React starter kit. Webpack, Babel, Sass, React 0.13.",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "jest",
+    "serve": "webpack-dev-server --hot --progress --colors --inline --content-base ./build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer-loader": "^1.2.0",
+    "babel-core": "^4.7.8",
+    "babel-loader": "^4.1.0",
+    "css-loader": "^0.9.1",
+    "jest": "^0.1.39",
+    "react": "^0.13.0",
+    "react-hot-loader": "^1.2.3",
+    "sass-loader": "^0.4.2",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "./preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "./node_modules/react"
+    ]
+  }
+}
