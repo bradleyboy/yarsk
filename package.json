@@ -4,9 +4,11 @@
   "description": "My React starter kit. Webpack, Babel, Sass, React 0.13.",
   "main": "app/index.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run",
-    "test:watch": "./node_modules/karma/bin/karma start",
-    "serve": "webpack-dev-server --hot --progress --colors --inline --content-base ./build"
+    "test": "./node_modules/karma/bin/karma start conf/karma.conf.js --single-run",
+    "test:watch": "./node_modules/karma/bin/karma start conf/karma.conf.js",
+    "test:coverage": "./node_modules/karma/bin/karma start conf/karma.coverage.conf.js --single-run",
+    "test:ci": "./node_modules/karma/bin/karma start conf/karma.ci.conf.js --single-run",
+    "serve": "webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build"
   },
   "author": "",
   "license": "MIT",
@@ -23,7 +25,10 @@
     "webpack-dev-server": "^1.7.0"
   },
   "devDependencies": {
+    "isparta": "^2.2.0",
+    "isparta-instrumenter-loader": "^0.1.1",
     "karma-chai": "^0.1.0",
+    "karma-coverage": "^0.2.7",
     "karma-mocha": "^0.1.10",
     "karma-notify-reporter": "^0.1.1",
     "karma-phantomjs-launcher": "^0.1.4",
