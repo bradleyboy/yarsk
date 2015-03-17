@@ -1,7 +1,7 @@
 import React from 'react';
 
 require('./style.sass');
-const logoURL = require('./react-logo.svg');
+const logoURL = require('./images/react-logo.svg');
 
 export default class Application extends React.Component {
   render() {

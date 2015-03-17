@@ -1,17 +1,29 @@
+*
+  box-sizing: border-box
+
+html, body
+  height: 100%
+
 body
-  background: darken(white, 5%)
+  background-image: url('./images/bg.jpg')
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
   font-family: "Helvetica Neue"
   padding: 1em
   display: flex
   justify-content: center
+  align-items: center
 
 .Application
   width: 500px
-  background: white
+  background: rgba(white, .95)
   padding: 1em
+  border-radius: .3em
+  box-shadow: 0 0 20px rgba(black, .1)
 
   a
-    color: #336633
+    color: #00D8FF
 
   header
     display: flex
@@ -21,7 +33,7 @@ body
 
     img
       margin-right: 20px
-      
+
     .Application--header-wrap
       display: flex
       flex-flow: column
