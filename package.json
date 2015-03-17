@@ -8,7 +8,9 @@
     "test:watch": "./node_modules/karma/bin/karma start conf/karma.conf.js",
     "test:coverage": "./node_modules/karma/bin/karma start conf/karma.coverage.conf.js --single-run",
     "test:ci": "./node_modules/karma/bin/karma start conf/karma.ci.conf.js --single-run",
-    "serve": "webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build"
+    "serve": "webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
+    "build": "webpack --config conf/webpack.production.js",
+    "build:gh": "webpack --config conf/webpack.production.js && node ./build-gh-pages.js && rm -r ./dist"
   },
   "author": "",
   "license": "MIT",
@@ -25,6 +27,9 @@
     "webpack-dev-server": "^1.7.0"
   },
   "devDependencies": {
+    "extract-text-webpack-plugin": "^0.3.8",
+    "gh-pages": "^0.2.0",
+    "html-webpack-plugin": "^1.1.0",
     "isparta": "^2.2.0",
     "isparta-instrumenter-loader": "^0.1.1",
     "karma-chai": "^0.1.0",
