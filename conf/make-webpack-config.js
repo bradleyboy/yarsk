@@ -40,7 +40,23 @@ module.exports = function(options) {
         {
           test: /\.sass$/,
           loader: sassLoaders,
-        }
+        },
+        {
+          test: /\.png$/,
+          loader: "url-loader?limit=100000&mimetype=image/png",
+        },
+        {
+          test: /\.svg$/,
+          loader: "url-loader?limit=100000&mimetype=image/svg+xml",
+        },
+        {
+          test: /\.gif$/,
+          loader: "url-loader?limit=100000&mimetype=image/gif",
+        },
+        {
+          test: /\.jpg$/,
+          loader: "file-loader",
+        },
       ]
     },
     resolve: {

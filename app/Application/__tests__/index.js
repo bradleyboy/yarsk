@@ -1,5 +1,5 @@
 describe('Application', function() {
-  it('displays "Hello, World!"', function() {
+  it('displays the header', function() {
     var React = require('react/addons');
     var Application = require('../index.jsx');
     var TestUtils = React.addons.TestUtils;

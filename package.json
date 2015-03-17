@@ -1,7 +1,7 @@
 {
   "name": "bradleyboy-react-starter",
   "version": "1.0.0",
-  "description": "My React starter kit. Webpack, Babel, Sass, React 0.13.",
+  "description": "My React starter kit. Webpack, Babel, Sass, React 0.13 and more.",
   "main": "app/index.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start conf/karma.conf.js --single-run",
@@ -9,10 +9,10 @@
     "test:coverage": "./node_modules/karma/bin/karma start conf/karma.coverage.conf.js --single-run",
     "test:ci": "./node_modules/karma/bin/karma start conf/karma.ci.conf.js --single-run",
     "serve": "webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
-    "build": "webpack --config conf/webpack.production.js",
+    "build": "rm -r ./dist && webpack --config conf/webpack.production.js",
     "build:gh": "webpack --config conf/webpack.production.js && node ./build-gh-pages.js && rm -r ./dist"
   },
-  "author": "",
+  "author": "Brad Daily <brad@bradleyboy.com>",
   "license": "MIT",
   "dependencies": {
     "react": "^0.13.0"
@@ -23,6 +23,7 @@
     "babel-loader": "^4.1.0",
     "css-loader": "^0.9.1",
     "extract-text-webpack-plugin": "^0.3.8",
+    "file-loader": "^0.8.1",
     "gh-pages": "^0.2.0",
     "html-webpack-plugin": "^1.1.0",
     "isparta": "^2.2.0",
@@ -37,6 +38,7 @@
     "react-hot-loader": "^1.2.3",
     "sass-loader": "^0.4.2",
     "style-loader": "^0.8.3",
+    "url-loader": "^0.5.5",
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"
   }
