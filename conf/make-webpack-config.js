@@ -7,6 +7,11 @@ module.exports = function(options) {
   var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
   var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
 
+  if (options.production) {
+    cssLoaders = ExtractTextPlugin.extract('style-loader', cssLoaders.substr(cssLoaders.indexOf('!')));
+    sassLoaders = ExtractTextPlugin.extract('style-loader', sassLoaders.substr(sassLoaders.indexOf('!')));
+  }
+
   return {
     entry: './app/index.jsx',
     debug: !options.production,
@@ -30,11 +35,11 @@ module.exports = function(options) {
         },
         {
           test: /\.css$/,
-          loader: options.production ? ExtractTextPlugin.extract('style-loader', cssLoaders.substr(cssLoaders.indexOf('!'))) : cssLoaders,
+          loader: cssLoaders,
         },
         {
           test: /\.sass$/,
-          loader: options.production ? ExtractTextPlugin.extract('style-loader', sassLoaders.substr(sassLoaders.indexOf('!'))) : sassLoaders,
+          loader: sassLoaders,
         }
       ]
     },
@@ -42,6 +47,7 @@ module.exports = function(options) {
       extensions: ['', '.js', '.jsx'],
     },
     plugins: options.production ? [
+      // Important to keep React file size down
       new webpack.DefinePlugin({
         "process.env": {
           "NODE_ENV": JSON.stringify("production")

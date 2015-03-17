@@ -11,6 +11,6 @@ describe('Application', function() {
     var label = TestUtils.findRenderedDOMComponentWithTag(application, 'h1');
     var labelDOM = React.findDOMNode(label);
 
-    expect(labelDOM.textContent).to.equal('Hello, World!');
+    expect(labelDOM.textContent).to.equal('YARSK');
   });
 });
