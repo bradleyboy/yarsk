@@ -15,7 +15,7 @@
   "author": "Brad Daily <brad@bradleyboy.com>",
   "license": "MIT",
   "dependencies": {
-    "react": "^0.13.0"
+    "react": "~0.13.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^1.2.0",
