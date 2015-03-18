@@ -15,6 +15,7 @@ Everyone has one, here's mine.
 * [Karma](http://karma-runner.github.io/0.12/index.html) + [Mocha](http://mochajs.org/) for testing. [Istanbul](https://gotwarlost.github.io/istanbul/) and [isparta](https://github.com/douglasduteil/isparta) are also activated with `karma-coverage` for code coverage analysis, even on your ES6 classes. See [Testing](https://github.com/bradleyboy/yarsk#tests) below for more info.
 * Production configuration with best practices applied for optimizing React file size. The bundled JS file produced from this example is right at 40KB minified and gzipped. See [Building](https://github.com/bradleyboy/yarsk#building) below for more info.
 * Built-in command for publishing your app to GitHub pages. See [Building](https://github.com/bradleyboy/yarsk#building) below for more info.
+* [Optional support for ESLint via babel-eslint](https://github.com/bradleyboy/yarsk#linting).
 
 This kit is intentionally missing a specific Flux implementation, or any other non-essential library, as I use this as a base for experimenting with various parts of the React ecosystem.
 
@@ -74,3 +75,7 @@ npm run test:coverage
 See the `coverage` directory once that command is completed.
 
 Finally, the repo is [Travis](https://travis-ci.org) ready. The `.travis.yml` file should work out of the box, just add your repo in Travis.
+
+## Linting
+
+If you'd like your JavaScript to be linted, copy the `.eslintrc.example` to `.eslintrc`. I've included my own defaults, feel free to modify them to your own taste. For more information on configuring ESLint, [consult its documentation](http://eslint.org/docs/rules/). Linting is run before each webpack build when a `.eslintrc` file is present.

@@ -1,9 +1,12 @@
-var webpack = require('webpack');
 var path = require('path');
+var fs = require('fs');
+var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = function(options) {
+  options.lint = fs.existsSync(__dirname + '/../.eslintrc') && options.lint !== false;
+  
   var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
   var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
 
@@ -11,6 +14,8 @@ module.exports = function(options) {
     cssLoaders = ExtractTextPlugin.extract('style-loader', cssLoaders.substr(cssLoaders.indexOf('!')));
     sassLoaders = ExtractTextPlugin.extract('style-loader', sassLoaders.substr(sassLoaders.indexOf('!')));
   }
+
+  var jsLoaders = ['babel-loader'];
 
   return {
     entry: './app/index.jsx',
@@ -22,16 +27,23 @@ module.exports = function(options) {
       filename: options.production ? 'app.[hash].js' : 'app.js',
     },
     module: {
+      preLoaders: options.lint ? [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'eslint-loader',
+        }
+      ] : [],
       loaders: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loaders: ['babel-loader'],
+          loaders: jsLoaders,
         },
         {
           test: /\.jsx$/,
           exclude: /node_modules/,
-          loaders: options.production ? ['babel-loader'] : ['react-hot-loader', 'babel-loader'],
+          loaders: options.production ? jsLoaders : ['react-hot-loader'].concat(jsLoaders),
         },
         {
           test: /\.css$/,

@@ -32,13 +32,12 @@ module.exports = function(options) {
   };
 
   if (options.coverage) {
-    webpackConfig.module.preLoaders = [
-      {
-        test: /(\.jsx)|(\.js)$/,
-        exclude: /(__tests__|node_modules)/,
-        loader: 'isparta-instrumenter-loader'
-      }
-    ];
+    // Needs to load first to prevent linting issues
+    webpackConfig.module.preLoaders = [{
+      test: /\.jsx?$/,
+      exclude: /(__tests__|node_modules)/,
+      loader: 'isparta-instrumenter-loader',
+    }].concat(webpackConfig.module.preLoaders);
 
     karmaConfig.plugins.push('karma-coverage');
 
