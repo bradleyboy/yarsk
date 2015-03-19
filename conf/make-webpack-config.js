@@ -4,18 +4,26 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
+function extractForProduction(loaders) {
+  return ExtractTextPlugin.extract('style', loaders.substr(loaders.indexOf('!')))
+}
+
 module.exports = function(options) {
   options.lint = fs.existsSync(__dirname + '/../.eslintrc') && options.lint !== false;
-  
-  var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
-  var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
+
+  var cssLoaders = 'style!css!autoprefixer?browsers=last 2 versions';
+  var scssLoaders = cssLoaders + '!sass';
+  var sassLoaders = scssLoaders + '?indentedSyntax=sass';
+  var lessLoaders = cssLoaders + '!less';
 
   if (options.production) {
-    cssLoaders = ExtractTextPlugin.extract('style-loader', cssLoaders.substr(cssLoaders.indexOf('!')));
-    sassLoaders = ExtractTextPlugin.extract('style-loader', sassLoaders.substr(sassLoaders.indexOf('!')));
+    cssLoaders = extractForProduction(cssLoaders);
+    sassLoaders = extractForProduction(sassLoaders);
+    scssLoaders = extractForProduction(scssLoaders);
+    lessLoaders = extractForProduction(lessLoaders);
   }
 
-  var jsLoaders = ['babel-loader'];
+  var jsLoaders = ['babel'];
 
   return {
     entry: './app/index.jsx',
@@ -31,7 +39,7 @@ module.exports = function(options) {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          loader: 'eslint-loader',
+          loader: 'eslint',
         }
       ] : [],
       loaders: [
@@ -43,7 +51,7 @@ module.exports = function(options) {
         {
           test: /\.jsx$/,
           exclude: /node_modules/,
-          loaders: options.production ? jsLoaders : ['react-hot-loader'].concat(jsLoaders),
+          loaders: options.production ? jsLoaders : ['react-hot'].concat(jsLoaders),
         },
         {
           test: /\.css$/,
@@ -54,20 +62,28 @@ module.exports = function(options) {
           loader: sassLoaders,
         },
         {
+          test: /\.scss$/,
+          loader: scssLoaders,
+        },
+        {
+          test: /\.less$/,
+          loader: lessLoaders
+        },
+        {
           test: /\.png$/,
-          loader: "url-loader?limit=100000&mimetype=image/png",
+          loader: "url?limit=100000&mimetype=image/png",
         },
         {
           test: /\.svg$/,
-          loader: "url-loader?limit=100000&mimetype=image/svg+xml",
+          loader: "url?limit=100000&mimetype=image/svg+xml",
         },
         {
           test: /\.gif$/,
-          loader: "url-loader?limit=100000&mimetype=image/gif",
+          loader: "url?limit=100000&mimetype=image/gif",
         },
         {
           test: /\.jpg$/,
-          loader: "file-loader",
+          loader: "file",
         },
       ]
     },

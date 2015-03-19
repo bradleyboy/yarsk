@@ -10,7 +10,7 @@ Everyone has one, here's mine.
 * [Webpack](http://webpack.github.io/) for asset bundling.
 * [React hot loader](https://github.com/gaearon/react-hot-loader) enabled out of the box. Changes to React components will show in the browser immediately without a full reload.
 * [Babel](https://babeljs.io/) for ES6+ transpilation.
-* [SASS](http://sass-lang.com/) and [Autoprefixer](https://github.com/postcss/autoprefixer) enabled by default through Webpack.
+* [SASS](http://sass-lang.com/) (SCSS or Sass style), [Less](http://lesscss.org/), and [Autoprefixer](https://github.com/postcss/autoprefixer) enabled by default through Webpack.
 * Image loaders setup and ready to go so you can reference your images as `require()` statements in JS, or just use `url()` as usual in CSS and Webpack will take care of the rest. See the [Application](https://github.com/bradleyboy/yarsk/blob/master/app/Application/index.jsx#L4-L10) component and its [stylesheet](https://github.com/bradleyboy/yarsk/blob/master/app/Application/style.sass#L8) for examples of each.
 * [Karma](http://karma-runner.github.io/0.12/index.html) + [Mocha](http://mochajs.org/) for testing. [Istanbul](https://gotwarlost.github.io/istanbul/) and [isparta](https://github.com/douglasduteil/isparta) are also activated with `karma-coverage` for code coverage analysis, even on your ES6 classes. See [Testing](https://github.com/bradleyboy/yarsk#tests) below for more info.
 * Production configuration with best practices applied for optimizing React file size. The bundled JS file produced from this example is right at 40KB minified and gzipped. See [Building](https://github.com/bradleyboy/yarsk#building) below for more info.

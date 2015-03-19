@@ -1,6 +1,14 @@
 import React from 'react';
 
+/*
+  Can also use .less, .scss, or plain .css files here
+*/
 require('./style.sass');
+
+/*
+  Reference an image and get back a URL automatically via webpack.
+  webpack takes care of versioning, bundling for production, etc.
+*/
 const logoURL = require('./images/react-logo.svg');
 
 export default class Application extends React.Component {
