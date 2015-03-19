@@ -8,7 +8,7 @@
     "test:watch": "./node_modules/karma/bin/karma start conf/karma.conf.js",
     "test:coverage": "./node_modules/karma/bin/karma start conf/karma.coverage.conf.js --single-run",
     "test:ci": "./node_modules/karma/bin/karma start conf/karma.ci.conf.js --single-run",
-    "serve": "./node_modules/.bin/webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
+    "start": "./node_modules/.bin/webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
     "build": "./node_modules/.bin/webpack --config conf/webpack.production.js",
     "build:gh": "npm run build && node ./build-gh-pages.js && rm -r ./dist"
   },
