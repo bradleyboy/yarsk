@@ -1,5 +1,5 @@
 {
-  "name": "bradleyboy-react-starter",
+  "name": "yarsk",
   "version": "1.0.0",
   "description": "My React starter kit. Webpack, Babel, Sass, React 0.13 and more.",
   "main": "app/index.js",
@@ -8,9 +8,9 @@
     "test:watch": "./node_modules/karma/bin/karma start conf/karma.conf.js",
     "test:coverage": "./node_modules/karma/bin/karma start conf/karma.coverage.conf.js --single-run",
     "test:ci": "./node_modules/karma/bin/karma start conf/karma.ci.conf.js --single-run",
-    "serve": "webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
-    "build": "webpack --config conf/webpack.production.js",
-    "build:gh": "webpack --config conf/webpack.production.js && node ./build-gh-pages.js && rm -r ./dist"
+    "serve": "./node_modules/.bin/webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
+    "build": "./node_modules/.bin/webpack --config conf/webpack.production.js",
+    "build:gh": "npm run build && node ./build-gh-pages.js && rm -r ./dist"
   },
   "author": "Brad Daily <brad@bradleyboy.com>",
   "license": "MIT",
