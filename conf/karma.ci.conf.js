@@ -5,6 +5,6 @@ module.exports = function(config) {
     coverage: true,
     coverageReporters: [
       { type: 'text' },
-    ]
+    ],
   }));
 };

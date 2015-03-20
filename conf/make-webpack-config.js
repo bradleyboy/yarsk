@@ -1,11 +1,10 @@
-var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function extractForProduction(loaders) {
-  return ExtractTextPlugin.extract('style', loaders.substr(loaders.indexOf('!')))
+  return ExtractTextPlugin.extract('style', loaders.substr(loaders.indexOf('!')));
 }
 
 module.exports = function(options) {
@@ -40,7 +39,7 @@ module.exports = function(options) {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'eslint',
-        }
+        },
       ] : [],
       loaders: [
         {
@@ -67,7 +66,7 @@ module.exports = function(options) {
         },
         {
           test: /\.less$/,
-          loader: lessLoaders
+          loader: lessLoaders,
         },
         {
           test: /\.png$/,
@@ -85,7 +84,7 @@ module.exports = function(options) {
           test: /\.jpg$/,
           loader: "file",
         },
-      ]
+      ],
     },
     resolve: {
       extensions: ['', '.js', '.jsx'],
@@ -94,19 +93,19 @@ module.exports = function(options) {
       // Important to keep React file size down
       new webpack.DefinePlugin({
         "process.env": {
-          "NODE_ENV": JSON.stringify("production")
-        }
+          "NODE_ENV": JSON.stringify("production"),
+        },
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
-        }
+        },
       }),
       new ExtractTextPlugin("app.[hash].css"),
       new HtmlWebpackPlugin({
-        template: './conf/tmpl.html'
+        template: './conf/tmpl.html',
       }),
-    ] : []
+    ] : [],
   };
 };
