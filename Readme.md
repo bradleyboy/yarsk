@@ -52,6 +52,10 @@ npm run build:gh
 
 You can then view your app at `http://[yourgithubusername].github.io/[reponame]`. For example, you can load this demo at http://bradleyboy.github.io/yarsk.
 
+## Modifying the HTML
+
+The HTML file is generated using the `conf/tmpl.html` file. This file is used for both the development and production build.
+
 ## Tests
 
 The tests use Karma, Mocha and Chai through PhantomJS. See the example test in `app/Application/__tests__/index.js`. The test suite can be run like so:

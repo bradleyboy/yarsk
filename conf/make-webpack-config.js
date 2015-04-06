@@ -105,7 +105,12 @@ module.exports = function(options) {
       new ExtractTextPlugin("app.[hash].css"),
       new HtmlWebpackPlugin({
         template: './conf/tmpl.html',
+        production: true,
       }),
-    ] : [],
+    ] : [
+      new HtmlWebpackPlugin({
+        template: './conf/tmpl.html',
+      }),
+    ],
   };
 };
