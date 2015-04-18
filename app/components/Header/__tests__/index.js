@@ -1,5 +1,3 @@
-/*global describe, it, expect*/
-
 import React from 'react/addons';
 import Header from '../index.jsx';
 

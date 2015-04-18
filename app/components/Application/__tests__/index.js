@@ -1,5 +1,3 @@
-/*global describe, it, expect*/
-
 import React from 'react/addons';
 import Application from '../index.jsx';
 
