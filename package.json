@@ -18,12 +18,12 @@
     "react": "~0.13.0"
   },
   "devDependencies": {
-    "autoprefixer-loader": "^1.2.0",
+    "autoprefixer-loader": "^2.0.0",
     "babel": "^5.1.10",
     "babel-core": "^4.7.8",
     "babel-eslint": "^2.0.2",
     "babel-loader": "^5.0.0",
-    "css-loader": "^0.9.1",
+    "css-loader": "^0.14.0",
     "eslint": "^0.17.1",
     "eslint-loader": "^0.7.0",
     "extract-text-webpack-plugin": "^0.3.8",
@@ -43,8 +43,8 @@
     "less": "^2.4.0",
     "less-loader": "^2.1.0",
     "react-hot-loader": "^1.2.3",
-    "sass-loader": "^0.4.2",
-    "style-loader": "^0.8.3",
+    "sass-loader": "^1.0.0",
+    "style-loader": "^0.12.0",
     "url-loader": "^0.5.5",
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"

@@ -1,6 +1,6 @@
 // IMPORTANT: This needs to be first (before any other components)
 // to get around CSS order randomness in webpack.
-require('./css/base.sass');
+import './css/base';
 
 // Some ES6+ features require the babel polyfill
 // More info here: https://babeljs.io/docs/usage/polyfill/
