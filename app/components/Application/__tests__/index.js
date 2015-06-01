@@ -1,5 +1,6 @@
 import React from 'react/addons';
 import Application from '../index.jsx';
+import styles from '../style.sass';
 
 describe('Application', function() {
   it('displays the component', function() {
@@ -9,7 +10,7 @@ describe('Application', function() {
       <Application />
     );
 
-    const divs = TestUtils.scryRenderedDOMComponentsWithClass(application, 'ApplicationComponent');
+    const divs = TestUtils.scryRenderedDOMComponentsWithClass(application, styles.main);
 
     expect(divs.length).to.equal(1);
   });
