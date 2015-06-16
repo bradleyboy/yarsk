@@ -10,7 +10,8 @@ function extractForProduction(loaders) {
 module.exports = function(options) {
   options.lint = fs.existsSync(__dirname + '/../.eslintrc') && options.lint !== false;
 
-  var cssLoaders = 'style!css!autoprefixer?browsers=last 2 versions';
+  var localIdentName = options.production ? '[hash:base64]' : '[path]-[local]-[hash:base64:5]';
+  var cssLoaders = 'style!css?localIdentName=' + localIdentName + '!autoprefixer?browsers=last 2 versions';
   var scssLoaders = cssLoaders + '!sass';
   var sassLoaders = scssLoaders + '?indentedSyntax=sass';
   var lessLoaders = cssLoaders + '!less';
