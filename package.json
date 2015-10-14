@@ -1,21 +1,22 @@
 {
   "name": "yarsk",
   "version": "1.0.0",
-  "description": "My React starter kit. Webpack, Babel, Sass, React 0.13 and more.",
+  "description": "My React starter kit. Webpack, Babel, Sass, React 0.14 and more.",
   "main": "app/index.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start conf/karma.conf.js --single-run",
     "test:watch": "./node_modules/karma/bin/karma start conf/karma.conf.js",
     "test:coverage": "./node_modules/karma/bin/karma start conf/karma.coverage.conf.js --single-run",
     "test:ci": "./node_modules/karma/bin/karma start conf/karma.ci.conf.js --single-run",
-    "start": "./node_modules/.bin/webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --inline --content-base ./build",
+    "start": "./node_modules/.bin/webpack-dev-server --config conf/webpack.config.js --hot --progress --colors --content-base ./build",
     "build": "./node_modules/.bin/webpack --config conf/webpack.production.js",
     "build:gh": "npm run build && node ./build-gh-pages.js && rm -r ./dist"
   },
   "author": "Brad Daily <brad@bradleyboy.com>",
   "license": "MIT",
   "dependencies": {
-    "react": "~0.13.0"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
@@ -42,6 +43,7 @@
     "karma-webpack": "^1.5.0",
     "less": "^2.4.0",
     "less-loader": "^2.1.0",
+    "react-addons-test-utils": "^0.14.0",
     "react-hot-loader": "^1.2.3",
     "sass-loader": "^1.0.0",
     "style-loader": "^0.12.0",
