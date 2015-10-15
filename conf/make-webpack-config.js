@@ -23,10 +23,16 @@ module.exports = function(options) {
     lessLoaders = extractForProduction(lessLoaders);
   }
 
-  var jsLoaders = ['babel'];
+  var jsLoaders = options.production ?
+    ['babel?optional[]=optimisation.react.inlineElements&optional[]=optimisation.react.constantElements'] :
+    ['babel'];
 
   return {
-    entry: './app/index.jsx',
+    entry: options.production ? './app/index.jsx' : [
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      './app/index.jsx',
+    ],
     debug: !options.production,
     devtool: options.devtool,
     output: {
