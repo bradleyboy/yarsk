@@ -23,9 +23,7 @@ module.exports = function(options) {
     lessLoaders = extractForProduction(lessLoaders);
   }
 
-  var jsLoaders = options.production ?
-    ['babel?optional[]=optimisation.react.inlineElements&optional[]=optimisation.react.constantElements'] :
-    ['babel'];
+  var jsLoaders = ['babel'];
 
   return {
     entry: options.production ? './app/index.jsx' : [
