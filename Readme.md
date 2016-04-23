@@ -58,7 +58,7 @@ The HTML file is generated using the `conf/tmpl.html` file. This file is used fo
 
 ## Tests
 
-The tests use Karma, Mocha and Chai through PhantomJS. See the example test in `app/Application/__tests__/index.js`. The test suite can be run like so:
+The tests use Karma, Mocha and Chai through PhantomJS. See the example test in `app/components/Application/__tests__/index.js`. The test suite can be run like so:
 
 ```
 npm test
