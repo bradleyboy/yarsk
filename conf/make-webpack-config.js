@@ -1,6 +1,8 @@
 var fs = require('fs');
+var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var autoprefixer = require('autoprefixer');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function extractForProduction(loaders) {
@@ -8,10 +10,10 @@ function extractForProduction(loaders) {
 }
 
 module.exports = function(options) {
-  options.lint = fs.existsSync(__dirname + '/../.eslintrc') && options.lint !== false;
+  options.lint = fs.existsSync(path.resolve(__dirname, '..', '.eslintrc')) && options.lint !== false;
 
   var localIdentName = options.production ? '[hash:base64]' : '[path]-[local]-[hash:base64:5]';
-  var cssLoaders = 'style!css?localIdentName=' + localIdentName + '!autoprefixer?browsers=last 2 versions';
+  var cssLoaders = 'style!css?module&localIdentName=' + localIdentName + '!postcss?browsers=last 2 versions';
   var scssLoaders = cssLoaders + '!sass';
   var sassLoaders = scssLoaders + '?indentedSyntax=sass';
   var lessLoaders = cssLoaders + '!less';
@@ -22,8 +24,6 @@ module.exports = function(options) {
     scssLoaders = extractForProduction(scssLoaders);
     lessLoaders = extractForProduction(lessLoaders);
   }
-
-  var jsLoaders = ['babel'];
 
   return {
     entry: options.production ? './app/index.jsx' : [
@@ -48,14 +48,9 @@ module.exports = function(options) {
       ] : [],
       loaders: [
         {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
-          loaders: jsLoaders,
-        },
-        {
-          test: /\.jsx$/,
-          exclude: /node_modules/,
-          loaders: options.production ? jsLoaders : ['react-hot'].concat(jsLoaders),
+          loaders: ['babel'],
         },
         {
           test: /\.css$/,
@@ -75,19 +70,19 @@ module.exports = function(options) {
         },
         {
           test: /\.png$/,
-          loader: "url?limit=100000&mimetype=image/png",
+          loader: 'url?limit=100000&mimetype=image/png',
         },
         {
           test: /\.svg$/,
-          loader: "url?limit=100000&mimetype=image/svg+xml",
+          loader: 'url?limit=100000&mimetype=image/svg+xml',
         },
         {
           test: /\.gif$/,
-          loader: "url?limit=100000&mimetype=image/gif",
+          loader: 'url?limit=100000&mimetype=image/gif',
         },
         {
           test: /\.jpg$/,
-          loader: "file",
+          loader: 'file',
         },
       ],
     },
@@ -97,8 +92,8 @@ module.exports = function(options) {
     plugins: options.production ? [
       // Important to keep React file size down
       new webpack.DefinePlugin({
-        "process.env": {
-          "NODE_ENV": JSON.stringify("production"),
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production'),
         },
       }),
       new webpack.optimize.DedupePlugin(),
@@ -107,7 +102,7 @@ module.exports = function(options) {
           warnings: false,
         },
       }),
-      new ExtractTextPlugin("app.[hash].css"),
+      new ExtractTextPlugin('app.[hash].css'),
       new HtmlWebpackPlugin({
         template: './conf/tmpl.html',
         production: true,
@@ -117,5 +112,6 @@ module.exports = function(options) {
         template: './conf/tmpl.html',
       }),
     ],
+    postcss: [autoprefixer],
   };
 };

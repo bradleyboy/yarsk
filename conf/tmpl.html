@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yet Another React Starter Kit</title>
-    {% if (o.htmlWebpackPlugin.options.production) { %}
-    <link rel="stylesheet" href="app.{%=o.webpack.hash%}.css" media="all">
-    {% } %}
   </head>
   <body>
-    <div id="app"></div>
-
-    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-    {% } %}
+    <div class="app" id="app"></div>
   </body>
 </html>
