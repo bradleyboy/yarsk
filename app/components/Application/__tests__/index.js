@@ -1,16 +1,14 @@
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
-import Application from '../index.jsx';
+import Application from '../index.js';
 import styles from '../style.sass';
+import { shallow } from 'enzyme';
 
 describe('Application', function() {
   it('displays the component', function() {
-    const application = ReactTestUtils.renderIntoDocument(
+    const application = shallow(
       <Application />
     );
 
-    const divs = ReactTestUtils.scryRenderedDOMComponentsWithClass(application, styles.main);
-
-    expect(divs.length).to.equal(1);
+    expect(application.find(`.${styles.main}`)).to.have.length(1);
   });
 });

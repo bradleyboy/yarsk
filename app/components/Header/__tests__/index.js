@@ -1,18 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-addons-test-utils';
-import Header from '../index.jsx';
+import Header from '../index.js';
 import styles from '../style.sass';
+import { shallow } from 'enzyme';
 
 describe('Header', function() {
   it('displays the title', function() {
-    const header = ReactTestUtils.renderIntoDocument(
+    const header = shallow(
       <Header />
     );
 
-    const title = ReactTestUtils.findRenderedDOMComponentWithClass(header, styles.title);
-    const dom = ReactDOM.findDOMNode(title);
+    const title = header.find(`.${styles.title}`);
 
-    expect(dom.textContent).to.equal('YARSK');
+    expect(title.text()).to.equal('YARSK');
   });
 });

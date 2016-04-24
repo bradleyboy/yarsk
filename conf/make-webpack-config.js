@@ -26,10 +26,10 @@ module.exports = function(options) {
   }
 
   return {
-    entry: options.production ? './app/index.jsx' : [
+    entry: options.production ? './app/index.js' : [
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
-      './app/index.jsx',
+      './app/index.js',
     ],
     debug: !options.production,
     devtool: options.devtool,
@@ -41,14 +41,14 @@ module.exports = function(options) {
     module: {
       preLoaders: options.lint ? [
         {
-          test: /\.jsx?$/,
+          test: /\.js$/,
           exclude: /node_modules/,
           loader: 'eslint',
         },
       ] : [],
       loaders: [
         {
-          test: /\.jsx?$/,
+          test: /\.js$/,
           exclude: /node_modules/,
           loaders: ['babel'],
         },
@@ -87,7 +87,7 @@ module.exports = function(options) {
       ],
     },
     resolve: {
-      extensions: ['', '.js', '.jsx', '.sass', '.scss', '.less', '.css'],
+      extensions: ['', '.js', '.sass', '.scss', '.less', '.css'],
     },
     plugins: options.production ? [
       // Important to keep React file size down
@@ -113,5 +113,11 @@ module.exports = function(options) {
       }),
     ],
     postcss: [autoprefixer],
+    externals: {
+      'cheerio': 'window',
+      'react/addons': true,
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': true
+    }
   };
 };
