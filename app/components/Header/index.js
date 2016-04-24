@@ -16,7 +16,7 @@ import styles from './style';
  */
 import logoURL from './images/react-logo.svg';
 
-export default () => {
+const Header = () => {
   return <header className={styles.main}>
     <img className={styles.logo} src={logoURL} height="125"/>
 
@@ -26,3 +26,7 @@ export default () => {
     </div>
   </header>;
 };
+
+Header.displayName = 'Header';
+
+export default Header;

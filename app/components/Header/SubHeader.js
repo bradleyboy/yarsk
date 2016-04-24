@@ -11,4 +11,6 @@ const SubHeader = ({children}) => {
   </h2>;
 };
 
+SubHeader.displayName = 'SubHeader';
+
 export default SubHeader;
