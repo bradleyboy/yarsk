@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 
 describe('Header', function() {
   it('displays the title', function() {
-    const header = shallow(
-      <Header />
-    );
+    const header = shallow(<Header />);
 
     const title = header.find(`.${styles.title}`);
 
