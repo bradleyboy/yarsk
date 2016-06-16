@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SubHeader from './subheader';
+import SubHeader from './SubHeader';
 
 /**
  * Import locally scoped styles using css-loader
